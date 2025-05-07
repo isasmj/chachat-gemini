@@ -5,11 +5,18 @@ import requests
 from datetime import datetime
 from googletrans import Translator
 import base64
+from translate import Translator
+translator = Translator(to_lang="pt")  # Exemplo: traduzir para português
+translation = translator.translate("Hello")
+print(translation)
+
+# URL do GIF animado para o avatar
+GIF_AVATAR_URL = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExanFxbjJ3dHdnMnF6OXdyczgweXNwdzMydWhuanU5Nm53N2lma3ZwcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JIX9t2j0ZTN9S/giphy.gif"
 
 # Configuração da página com estilo mágico
 st.set_page_config(
     page_title="Magic Image Generator - Stability AI",
-    page_icon="🎨",
+    page_icon=GIF_AVATAR_URL,
     layout="wide"
 )
 
@@ -179,6 +186,20 @@ st.markdown("""
         background: #ff9ec6 !important;
     }
     
+    /* Estilo para o avatar animado */
+    .stChatMessage img.avatar {
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ff3e8a;
+        box-shadow: 0 0 15px rgba(255, 62, 138, 0.5);
+        transition: all 0.3s ease;
+    }
+    
+    .stChatMessage img.avatar:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(255, 62, 138, 0.8);
+    }
+    
     /* Responsivo */
     @media (max-width: 768px) {
         .magic-title {
@@ -239,7 +260,7 @@ if "messages" not in st.session_state:
 
 # Exibe o histórico de mensagens
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
+    with st.chat_message(message["role"], avatar=GIF_AVATAR_URL if message["role"] == "assistant" else None):
         if message["type"] == "text":
             st.markdown(message["content"])
         elif message["type"] == "image":
@@ -301,7 +322,7 @@ if prompt := st.chat_input("Descreva a imagem mágica que deseja criar..."):
         st.error("Por favor, insira sua chave da API Stability AI")
         st.stop()
     
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar=GIF_AVATAR_URL):
         with st.spinner("Conjurando sua imagem mágica..."):
             try:
                 generated_image = generate_image_with_stability(

@@ -6,6 +6,7 @@ from datetime import datetime
 from googletrans import Translator
 import base64
 
+
 # URL do GIF animado para o avatar
 GIF_AVATAR_URL = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExanFxbjJ3dHdnMnF6OXdyczgweXNwdzMydWhuanU5Nm53N2lma3ZwcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JIX9t2j0ZTN9S/giphy.gif"
 
@@ -331,7 +332,7 @@ if prompt := st.chat_input("Descreva a imagem mágica que deseja criar..."):
                     sampler=sampler
                 )
                 
-                st.image(generated_image, use_column_width=True, output_format="PNG", caption="Sua imagem mágist.image(generated_image, use_column_width=True, output_format="PNG", caption="Sua imagem mágica foi conjurada!")ca foi conjurada!")
+                st.image(generated_image, use_container_width=True, output_format="PNG", caption="Sua imagem mágica foi conjurada!")
                 
                 st.session_state.messages.append({
                     "role": "assistant", 

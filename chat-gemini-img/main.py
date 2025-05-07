@@ -5,10 +5,6 @@ import requests
 from datetime import datetime
 from googletrans import Translator
 import base64
-from translate import Translator
-translator = Translator(to_lang="pt")  # Exemplo: traduzir para português
-translation = translator.translate("Hello")
-print(translation)
 
 # URL do GIF animado para o avatar
 GIF_AVATAR_URL = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExanFxbjJ3dHdnMnF6OXdyczgweXNwdzMydWhuanU5Nm53N2lma3ZwcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JIX9t2j0ZTN9S/giphy.gif"

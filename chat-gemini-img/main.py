@@ -331,7 +331,7 @@ if prompt := st.chat_input("Descreva a imagem mágica que deseja criar..."):
                     sampler=sampler
                 )
                 
-                st.image(generated_image, use_column_width=True, output_format="PNG", caption="Sua imagem mágica foi conjurada!")
+                st.image(generated_image, use_column_width=True, output_format="PNG", caption="Sua imagem mágist.image(generated_image, use_column_width=True, output_format="PNG", caption="Sua imagem mágica foi conjurada!")ca foi conjurada!")
                 
                 st.session_state.messages.append({
                     "role": "assistant", 
